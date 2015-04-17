@@ -16,6 +16,7 @@ class SubsController < ApplicationController
   end
 
   def show
+    @posts = current_sub.posts.includes(:author)
     current_sub
     render :show
   end

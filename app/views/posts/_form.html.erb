@@ -1,5 +1,5 @@
 <% action_url = "#{sub_posts_url(post.sub)}" if params[:action] == "new" %>
-<% action_url = "#{sub_post_url(post.sub)}" if params[:action] == "edit" %>
+<% action_url = "#{sub_post_url(id: post.id, sub_id: post.sub.id)}" if params[:action] == "edit" %>
 
 <form
   class=""

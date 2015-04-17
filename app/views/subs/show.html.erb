@@ -1,4 +1,4 @@
-<h1><%=@sub.title%></h1>
+<h1><%= @sub.title %></h1>
 <h3><%=@sub.description%></h3>
 <% if @sub.moderator_id == current_user.id %>
 <form class="" action="<%=sub_url @sub%>" method="post">
@@ -9,3 +9,14 @@
   <button>Edit</button>
 </form>
 <% end %>
+<ul>
+<% @posts.each do |post| %>
+<li><strong><%= post.title %></strong><br>
+  <%= post.content %><br>
+  posted by: <%= post.author.username %><br>
+  <% if current_user.id == post.author.id %>
+  <a href="<%= edit_sub_post_url(id: post.id, sub_id: post.sub.id) %>">edit</a>
+<% end %>
+</li>
+<% end %>
+</ul>
