@@ -1,3 +1,11 @@
 <h1><%=@sub.title%></h1>
 <h3><%=@sub.description%></h3>
-<a href="<%= edit_sub_url(@sub) %>">Edit</a>
+<% if @sub.moderator_id == current_user.id %>
+<form class="" action="<%=sub_url @sub%>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <button>Delete!!!</button>
+</form>
+<form class="" action="<%= edit_sub_url(@sub) %>" method="get">
+  <button>Edit</button>
+</form>
+<% end %>

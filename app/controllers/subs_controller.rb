@@ -20,7 +20,7 @@ class SubsController < ApplicationController
     render :show
   end
 
-  def delete
+  def destroy
     current_sub.destroy
     redirect_to subs_url
   end
