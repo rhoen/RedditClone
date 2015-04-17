@@ -8,6 +8,10 @@ class ApplicationController < ActionController::Base
   end
 
   def log_user_in user
-    
+
+  end
+
+  def user_params
+    params.require(:user).permit(:username, :password)
   end
 end
