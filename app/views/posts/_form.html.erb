@@ -1,0 +1,47 @@
+<% action_url = "#{sub_posts_url(post.sub)}" if params[:action] == "new" %>
+<% action_url = "#{sub_post_url(post.sub)}" if params[:action] == "edit" %>
+
+<form
+  class=""
+  action="<%= action_url %>"
+  method="post">
+
+  <% if params[:action] == "edit"%>
+    <input type="hidden" name="_method" value="patch">
+  <% end %>
+
+  <label for="sub_title">Title</label>
+
+  <textarea
+    name="post[title]"
+    rows="8"
+    cols="40"
+    id="post_title">
+      <%=post.title%>
+  </textarea>
+  <label for="post_content">Content</label>
+  <textarea
+    name="post[content]"
+    rows="8"
+    cols="40"
+    id="post_content">
+      <%= post.content %>
+  </textarea>
+  <input
+    type="hidden"
+    name="post[author_id]"
+    value="<%=current_user.id%>">
+
+  <button>Submit</button>
+
+  <input
+    type="hidden"
+    name="post[sub_id]"
+    value="<%= post.sub_id %> ">
+
+  <input
+    type="hidden"
+    name="post[author_id]"
+    value="<%= current_user.id %>">
+
+</form>

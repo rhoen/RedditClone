@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   def new
-    @post = Post.new
+    @post = Post.new(sub_id: params[:sub_id])
     render :new
   end
 
