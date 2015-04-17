@@ -2,17 +2,12 @@
 
 <form
   class=""
-  action="<%= session_url %>"
-  method="post"
+  action="<%= subs_url %>"
+  method="get"
   style="display:inline">
-  <input
-    type="hidden"
-    name="_method"
-    value="delete">
-  <input
-    type="submit"
-    name="log_out"
-    value="Log out">
+
+  <button>All subs</button>
+
 </form>
 
 <form
@@ -25,6 +20,19 @@
 
 </form>
 
+<form
+  class=""
+  action="<%= session_url %>"
+  method="post"
+  style="display:inline">
+  <input
+    type="hidden"
+    name="_method"
+    value="delete">
+  <input
+    type="submit"
+    name="log_out"
+    value="Log out">
 </form>
 
 <% else %>
