@@ -1,0 +1,54 @@
+<% if logged_in? %>
+
+<form
+  class=""
+  action="<%= session_url %>"
+  method="post"
+  style="display:inline">
+  <input
+    type="hidden"
+    name="_method"
+    value="delete">
+  <input
+    type="submit"
+    name="log_out"
+    value="Log out">
+</form>
+
+<form
+  class=""
+  action="new_sub_url"
+  method="get"
+  style="display:inline">
+
+  <button>New sub</button>
+
+</form>
+
+</form>
+
+<% else %>
+
+<form
+  class=""
+  action="<%= new_user_url %>"
+  method="get"
+  style="display:inline">
+
+  <button>Sign up</button>
+
+</form>
+
+<form
+  class=""
+  action="<%= new_session_url %>"
+  method="get"
+  style="display:inline">
+
+  <button>Sign in</button>
+
+</form>
+
+<% end %>
+
+<hr />
