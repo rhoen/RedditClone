@@ -14,9 +14,20 @@
 <li><strong><%= post.title %></strong><br>
   <%= post.content %><br>
   posted by: <%= post.author.username %><br>
+
   <% if current_user.id == post.author.id %>
-  <a href="<%= edit_sub_post_url(id: post.id, sub_id: post.sub.id) %>">edit</a>
-<% end %>
+    <a href="<%= edit_sub_post_url(id: post.id, sub_id: post.sub.id) %>">edit</a>
+  <% end %>
+
 </li>
 <% end %>
 </ul>
+
+<form
+  class=""
+  action="<%= new_sub_post_url(@sub) %>"
+  method="get">
+
+  <button>New post</button>
+
+</form>
