@@ -10,7 +10,8 @@ class SessionsController < ApplicationController
     @user = User.find_by_credentials(username, password)
 
     if @user
-      # log_in_user @user
+      @user.reset_session_token!
+      log_user_in @user
       redirect_to user_url @user
     else
       flash.now[:errors] = ["Incorrect username/password combination"]
