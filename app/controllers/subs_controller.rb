@@ -1,5 +1,5 @@
 class SubsController < ApplicationController
-
+  before_action :ensure_moderator, only: [:update, :edit, :destroy]
   def new
     @sub = Sub.new
     render :new
@@ -50,6 +50,11 @@ class SubsController < ApplicationController
   end
   def current_sub
     @sub ||= Sub.find(params[:id])
+  end
+  def ensure_moderator
+    unless current_user.id == current_sub.moderator_id
+      redirect_to sub_url current_sub
+    end
   end
 
 end

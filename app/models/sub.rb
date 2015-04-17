@@ -6,4 +6,5 @@ class Sub < ActiveRecord::Base
     :moderator,
     class_name: "User"
   )
+  has_many :posts
 end
