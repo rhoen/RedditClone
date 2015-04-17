@@ -1,7 +1,5 @@
 class UsersController < ApplicationController
-
-
-
+  
   def new
     @user = User.new
     render :new
@@ -27,6 +25,5 @@ class UsersController < ApplicationController
     @users = User.all
     render :index
   end
-
 
 end

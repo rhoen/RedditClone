@@ -11,16 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150417145509) do
+ActiveRecord::Schema.define(version: 20150417161005) do
 
   create_table "users", force: :cascade do |t|
     t.string   "username",        null: false
     t.string   "password_digest", null: false
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.string   "session_token",   null: false
   end
 
   add_index "users", ["password_digest"], name: "index_users_on_password_digest"
+  add_index "users", ["session_token"], name: "index_users_on_session_token", unique: true
   add_index "users", ["username"], name: "index_users_on_username", unique: true
 
 end
