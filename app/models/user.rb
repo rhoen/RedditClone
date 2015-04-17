@@ -1,7 +1,9 @@
 class User < ActiveRecord::Base
   validates :username, presence: true, uniqueness: true
   validates :password_digest, presence: true
-  validates :password, length: { minimum: 6 }
+  #validates :password, length: { minimum: 6 }
+
+  after_initialize :ensure_session_token
 
   def self.generate_random_token
     SecureRandom.base64
@@ -22,6 +24,17 @@ class User < ActiveRecord::Base
 
   def is_password?(password)
     BCrypt::Password.new(self.password_digest).is_password?(password)
+  end
+
+  def reset_session_token!
+    self.session_token = User.generate_random_token
+    self.save!
+  end
+
+  private
+
+  def ensure_session_token
+    self.session_token ||= self.class.generate_random_token
   end
 
 end
