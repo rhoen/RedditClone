@@ -1,4 +1,4 @@
 class PostSub < ActiveRecord::Base
-  belongs_to :posts
-  belongs_to :subs
+  belongs_to :post
+  belongs_to :sub
 end

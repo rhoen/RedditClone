@@ -7,5 +7,5 @@ class Sub < ActiveRecord::Base
     class_name: "User"
   )
   has_many :post_subs
-  has_many :posts, through: :post_subs, source: :posts
+  has_many :posts, through: :post_subs, source: :post
 end

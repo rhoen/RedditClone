@@ -32,7 +32,10 @@
     name="post[author_id]"
     value="<%=current_user.id%>">
 
-  <button>Submit</button>
+  <button>Submit</button><br>
+  <% subs.each do |sub| %>
+  <input type="checkbox" name="post[<%=sub.title%>]" value="">sub.title<br>
+  <% end %>
 
   <input
     type="hidden"
