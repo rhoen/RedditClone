@@ -28,7 +28,11 @@
 
   <button>Submit</button><br>
   <% subs.each do |sub| %>
-  <input type="checkbox" name="post[sub_ids][]" value="<%=sub.id%>"><%=sub.title%><br>
+  <input
+  type="checkbox"
+  name="post[sub_ids][]"
+  value="<%=sub.id%>"
+  <%= "checked" if post.subs.include?(sub) %>><%=sub.title%><br>
   <% end %>
 
 

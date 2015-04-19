@@ -9,7 +9,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     if @post.save
-      @post.subs = params[:post][:sub_ids]
+      @post.sub_ids = params[:post][:sub_ids]
 
       redirect_to post_url(@post)
     else
