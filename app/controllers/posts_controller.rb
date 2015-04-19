@@ -9,9 +9,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     if @post.save
-      params[:post][:sub_ids].each do |sub_id|
-        PostSub.create!(sub_id: sub_id, post_id: @post.id)
-      end
+      @post.subs = params[:post][:sub_ids]
 
       redirect_to post_url(@post)
     else
@@ -37,7 +35,8 @@ class PostsController < ApplicationController
 
   def update
     if current_post.update(post_params)
-      redirect_to sub_url(current_post.sub)
+      current_post.sub_ids = params[:post][:sub_ids]
+      redirect_to post_url(current_post)
     else
       flash.now[:errors] = current_post.errors.full_messages
       render :edit
