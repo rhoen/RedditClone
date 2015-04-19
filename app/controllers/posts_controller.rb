@@ -30,6 +30,7 @@ class PostsController < ApplicationController
   end
 
   def edit
+    @subs = Sub.all
     current_post
     render :edit
   end
