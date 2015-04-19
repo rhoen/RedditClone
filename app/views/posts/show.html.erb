@@ -8,6 +8,9 @@
   Written by: <%= @post.author.username %>
 </p>
 <p>This post belongs to the following subs:</p>
+<% if current_user.id == @post.author.id %>
+  <a href="<%= edit_post_url(id: @post.id) %>">edit</a><br>
+<% end %>
 <%@post.subs.each do |sub| %>
 <a href="<%= sub_url sub %>"><strong><%= sub.title %></strong></a><br>
 <% end %>
