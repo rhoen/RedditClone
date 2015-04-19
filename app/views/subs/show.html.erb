@@ -11,7 +11,7 @@
 <% end %>
 <ul>
 <% @posts.each do |post| %>
-<li><strong><%= post.title %></strong><br>
+<li><a href="<%= post_url post %>"><strong><strong><%= post.title %></strong></a><br>
   <%= post.content %><br>
   posted by: <%= post.author.username %><br>
 

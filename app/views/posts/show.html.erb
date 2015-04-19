@@ -9,5 +9,5 @@
 </p>
 <p>This post belongs to the following subs:</p>
 <%@post.subs.each do |sub| %>
-<%= sub.title %>
+<a href="<%= sub_url sub %>"><strong><%= sub.title %></strong></a><br>
 <% end %>
