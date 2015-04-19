@@ -16,7 +16,7 @@
   posted by: <%= post.author.username %><br>
 
   <% if current_user.id == post.author.id %>
-    <a href="<%= edit_sub_post_url(id: post.id, sub_id: post.sub.id) %>">edit</a>
+    <a href="<%= edit_post_url(id: post.id) %>">edit</a>
   <% end %>
 
 </li>

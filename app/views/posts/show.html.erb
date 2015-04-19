@@ -7,3 +7,7 @@
 <p>
   Written by: <%= @post.author.username %>
 </p>
+<p>This post belongs to the following subs:</p>
+<%@post.subs.each do |sub| %>
+<%= sub.title %>
+<% end %>

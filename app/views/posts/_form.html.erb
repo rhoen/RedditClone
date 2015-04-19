@@ -1,5 +1,5 @@
-<% action_url = "#{sub_posts_url(post.sub)}" if params[:action] == "new" %>
-<% action_url = "#{sub_post_url(id: post.id, sub_id: post.sub.id)}" if params[:action] == "edit" %>
+<% action_url = "#{posts_url}" if params[:action] == "new" %>
+<% action_url = "#{post_url(id: params[:id])}" if params[:action] == "edit" %>
 
 <form
   class=""
@@ -16,9 +16,7 @@
     name="post[title]"
     rows="8"
     cols="40"
-    id="post_title">
-      <%=post.title%>
-  </textarea>
+    id="post_title"><%=post.title%></textarea>
   <label for="post_content">Content</label>
   <textarea
     name="post[content]"
@@ -27,20 +25,12 @@
     id="post_content">
       <%= post.content %>
   </textarea>
-  <input
-    type="hidden"
-    name="post[author_id]"
-    value="<%=current_user.id%>">
 
   <button>Submit</button><br>
   <% subs.each do |sub| %>
-  <input type="checkbox" name="post[<%=sub.title%>]" value="">sub.title<br>
+  <input type="checkbox" name="post[sub_ids][]" value="<%=sub.id%>"><%=sub.title%><br>
   <% end %>
 
-  <input
-    type="hidden"
-    name="post[sub_id]"
-    value="<%= post.sub_id %> ">
 
   <input
     type="hidden"

@@ -1,14 +1,19 @@
 class PostsController < ApplicationController
   def new
     @subs = Sub.all
-    @post = Post.new(sub_id: params[:sub_id])
+    @default_sub = params[:sub_id]
+    @post = Post.new
     render :new
   end
 
   def create
     @post = Post.new(post_params)
     if @post.save
-      redirect_to sub_url(@post.sub)
+      params[:post][:sub_ids].each do |sub_id|
+        PostSub.create!(sub_id: sub_id, post_id: @post.id)
+      end
+
+      redirect_to post_url(@post)
     else
       flash.now[:errors] = @post.errors.full_messages
       render :new
@@ -20,9 +25,9 @@ class PostsController < ApplicationController
     current_post.destroy
   end
 
-  # def show
-  #
-  # end
+  def show
+    @post = Post.find(params[:id])
+  end
 
   def edit
     current_post
