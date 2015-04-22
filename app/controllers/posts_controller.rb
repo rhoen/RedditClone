@@ -9,6 +9,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.author_id = current_user.id
+    @subs = Sub.all
     if @post.save
       @post.sub_ids = params[:post][:sub_ids]
 
