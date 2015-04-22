@@ -12,7 +12,7 @@ class PostsController < ApplicationController
     @subs = Sub.all
 
     if @post.save
-      @post.sub_ids = params[:post][:sub_ids]
+
 
       redirect_to post_url(@post)
     else
