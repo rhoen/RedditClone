@@ -10,6 +10,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.author_id = current_user.id
     @subs = Sub.all
+
     if @post.save
       @post.sub_ids = params[:post][:sub_ids]
 
@@ -48,7 +49,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:sub_id, :title, :content, :url)
+    params.require(:post).permit(:title, :content, :url, sub_ids: [])
   end
 
   def current_post

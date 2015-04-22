@@ -7,6 +7,6 @@ class Post < ActiveRecord::Base
   has_many :subs, through: :post_subs, source: :sub
 
   def at_least_one_sub
-    errors[:base] << "must have at least one sub" unless self.subs.count >= 1
+    errors[:base] << "must have at least one sub" unless self.subs.size >= 1
   end
 end
