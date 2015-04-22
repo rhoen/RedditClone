@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   def new
     @subs = Sub.all
-    @default_sub = params[:sub_id]
+    @default_sub_id = params[:sub_id].to_i
     @post = Post.new
     render :new
   end
