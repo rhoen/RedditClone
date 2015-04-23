@@ -12,8 +12,6 @@ class PostsController < ApplicationController
     @subs = Sub.all
 
     if @post.save
-
-
       redirect_to post_url(@post)
     else
       flash.now[:errors] = @post.errors.full_messages
